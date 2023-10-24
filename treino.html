@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+</head>
+<style>
+    body{
+        background-color: rgb(164, 207, 226);
+    }
+    button{
+        margin-left: 10px;
+        margin-top: 5px;
+        padding: 5px;
+        height: 50px;
+        width: 110px;
+        font-size: medium;
+        box-shadow: 3px 3px 3px  rgb(119, 153, 197);        
+    }
+    button:active{
+        box-shadow: 0 0 0 0;
+    }
+   
+    div#resultado{
+        height: 350px;
+        width: 320px;
+        background-color: rgba(163, 175, 189, 0.904);
+        padding: 5px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px rgba(7, 14, 20, 0.897);
+        position: absolute;
+        margin-left: 438px;
+        margin-top: -440px;
+        position: sticky;
+        font-size: 30px;        
+    }
+    div#resultadomono{
+        height: 350px;
+        width: 320px;
+        background-color: rgba(82, 196, 120, 0.849);
+        padding: 5px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px rgba(66, 78, 69, 0.897);
+        position: absolute;
+        margin-left: 438px;
+        margin-top: -440px;
+        position: sticky;
+        font-size: 30px;        
+    }
+    .presultado{
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        position: relative;
+        text-align: center;
+        padding: 25px;
+        margin: auto;
+    }
+    .presultadomono{
+        font-size: 23px;
+        color: rgb(0, 0, 0);
+        position: relative;
+        text-align: center;
+        padding: 25px;
+        margin: auto;
+    }
+    div#coluna2{
+        margin-left: 140px;
+        position: absolute;
+        margin-top: -513px;
+    }
+    div#coluna4{
+        margin-left: 140px;
+        position: absolute;
+        margin-top: -513px;
+    }
+    
+    
+    
+    h1{
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(38, 53, 66);
+        padding-left: 10px;
+        padding-top: 10px;
+    
+    }
+    
+    
+    button#voltar{
+    font-size: 14px;
+    margin-top: 9px;
+    margin-left: 20px;
+    position: absolute;
+    height: 30px;
+    border-radius: 1px;
+    box-shadow: none;
+        
+    }
+    
+    p#trifasico380{
+        position: absolute;
+        margin-left: 500px;
+        padding: 10PX;
+        margin-top: 30px;
+    }
+    .btn{
+       height: 45px;
+       width: 70px;
+       border-radius: 15px;
+       font-size: 14px;
+       padding: 5px;
+       margin-top: 1px;
+       margin-bottom: 2px;
+       box-shadow: 1px 1px 1px rgb(16, 19, 20); 
+       background-color: rgb(140, 164, 172);
+
+    }
+    h1{
+        background-color: rgba(41, 51, 73, 0.808); ;
+        height: 60px;
+        border-radius: 5px;
+    }
+    .add{
+        position: absolute;
+        margin-left: 540px;
+        margin-top: 8px;
+    }
+    .enviar{
+        position: absolute;
+        margin-left: 830px;
+        margin-top: -496px;
+        
+    }
+    
+    .adcionar{
+        border-radius: 10px;
+        background-color:  rgb(67, 75, 75);
+        border-color: rgb(151, 204, 204);
+        color: aliceblue;
+        
+
+    }
+    .enviando{
+        border-radius: 10px;
+        background-color:  rgb(67, 75, 75);
+        color: aliceblue;
+        width: 85px;
+        height: 45px;
+        box-shadow: 0 0 0 0;
+        border-color: rgb(67, 75, 75);
+    }
+
+    input#funcionario{
+        margin-top: 8px;
+        margin-left: 120px;
+        position: absolute;
+        padding: 5px;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        width: 150px;
+        border-radius: 5px;
+
+    }
+    #href{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<body>
+    
+    
+        <h1 id="tabela4"><Main>
+            <button class="btn" id="380Vtri" onclick="tensao('380Vtri')">TRI 220/380</button>
+            <button class="btn" id="440Vtri" onclick="tensao('440Vtri')">TRI  440V</button>
+            <button class="btn" id="440Vtri-e" onclick="tensao('440Vtri-e')">TRI-E 440V</button>
+            <button class="btn" id="220Vmono" onclick="tensao('220Vmono')">MONO 220V</button>
+            <button class="btn" id="254Vmono"onclick="tensao('254Vmono')">MONO 254V</button>
+            <button class="btn" id="440Vmono" onclick="tensao('440Vmono')">MONO 440V</button>
+            <button class="btn" id="voltar" onclick="voltar()"> <a id="href" type="button" href="inicio.html">VOLTAR</a></button>
+            <input type="text" id="funcionario"></Main><p name="pres" id="trifasico380"></p></h1>
+        
+        <div id="coluna1" class="divtri">   
+            <p><button id="0.3hp" onclick="clicar('0.3hp')">0.3HP 4"</button></p>
+            <p><button id="0.5hp" onclick="clicar('0.5hp')">0.5/0.7HP 4"</button></p>
+            <p><button id="1hp" onclick="clicar('1hp')">1HP 4"</button></p>
+            <p><button id="1.5hp" onclick="clicar('1.5hp')">1.5HP 4"</button></p>
+            <p><button id="2hp" onclick="clicar('2hp')">2HP 4"</button></p>
+            <p><button id="3hp" onclick="clicar('3hp')">2.5/3HP 4"</button></p>
+            <p><button id="4hp" onclick="clicar('4hp')">4HP 4"</button></p>
+        </div>
+
+        <div id="coluna2" class="divtri">
+            <p><button id="5hp" onclick="clicar('5hp')">5HP 4"</button></p>
+            <p><button id="5.5hp" onclick="clicar('5.5hp')">5.5HP 4"</button></p>
+            <p><button id="6hp" onclick="clicar('6hp')">6HP 4"</button></p>
+            <p><button id="7hp" onclick="clicar('7hp')">7/8HP 4"</button></p>
+            <p><button id="9hp" onclick="clicar('9hp')">9/10HP 4"</button></p>
+            <p><button id="11hp" onclick="clicar('11hp')">11HP 4"</button></p>
+            <p><button id="12hp" onclick="clicar('12hp')">12HP 4"</button></p>
+        </div>    
+            
+
+            
+        <div id="coluna3" class="divmono">   
+            <p><button id="0.3hpM" onclick="clicar('0.3hpM')">0.3HP 4"</button></p>
+            <p><button id="0.5hpM" onclick="clicar('0.5hpM')">0.5HP 4"</button></p>
+            <p><button id="0.7pM" onclick="clicar('0.7hpM')">0.7HP 4"</button></p>
+            <p><button id="1hpM" onclick="clicar('1hpM')">1HP 4"</button></p>
+            <p><button id="1.5hpM" onclick="clicar('1.5hpM')">1.5HP 4"</button></p>
+            <p><button id="2hpM" onclick="clicar('2hpM')">2HP 4"</button></p>
+            <p><button id="3hpM" onclick="clicar('3hpM')">3HP 4"</button></p>
+        </div>
+        <div id="coluna4" class="divmono">
+            <p><button id="4hpM" onclick="clicar('4hpM')">4HP 4"</button></p>
+            <p><button id="5hpM" onclick="clicar('5hpM')">5HP 4"</button></p>
+            <p><button id="5.5hpM" onclick="clicar('5.5hpM')">5.5HP 4"</button></p>
+        </div>    
+                            
+                        
+        <div id="resultado">
+            <p class="presultado" id="motor">0</p>
+            <p class="presultado" id="espiras">2</p>
+            <p class="presultado" id="bitola">3</p>
+            <p class="presultado" id="forma">4</p>            
+        </div>
+        <div id="resultadomono">
+            <p class="presultadomono" id="motorM">0</p>
+            <p class="presultadomono" id="tr">2</p>
+            <p class="presultadomono" id="ar">3</p>
+            <p class="presultadomono" id="formaM">4</p>            
+        </div>        
+    
+    <div id="add" class="add"><button class="adcionar" onclick="add()">Adcionar</button></div>
+    <div id="enviar" class="enviar"><button class="enviando">Enviar</button></div>
+    
+    
+    
+    <script>
+        var info =''
+        const divt = document.getElementById('resultado')
+        const divM = document.getElementById('resultadomono')
+        const botoestri1 = document.getElementById('coluna1')
+        const botoestri2 = document.getElementById('coluna2')
+        const botoesmono1 = document.getElementById('coluna3')
+        const botoesmono2 = document.getElementById('coluna4')
+        const adcionar = document.getElementById('add')
+        const enviar = document.getElementById('enviar')
+        
+
+        divt.style.display = 'None'
+        divM.style.display = 'None'
+        botoesmono1.style.display = 'None'
+        botoesmono2.style.display = 'None'
+        botoestri1.style.display = "None"
+        botoestri2.style.display = 'None'
+        adcionar.style.display = 'None'
+        enviar.style.display = 'None'
+                
+                                                    
+        
+                
+        const listaDeProducao = []
+           
+
+        
+        
+        function tensao(tns){
+            
+            const rtri = document.getElementById('motor')
+            const rmono = document.getElementById('motorM')
+            var res = document.getElementById('trifasico380')
+            const tensao = document.getElementById(tns)
+            
+            if (tns == '380Vtri'){
+                res.innerHTML = '220V/380V Trifásico'
+                botoestri1.style.display = 'block'
+                botoestri2.style.display = 'block'
+                botoesmono1.style.display = 'None'
+                botoesmono2.style.display = 'None'
+                rmono.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+
+
+                                                
+            }
+            else if(tns == '440Vtri'){
+                res.innerHTML = '440V Trifásico'
+                botoestri1.style.display = 'block'
+                botoestri2.style.display = 'block'
+                botoesmono1.style.display = 'None'
+                botoesmono2.style.display = 'None'
+                rmono.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+                                                
+                
+            }
+            else if(tns == '440Vtri-e'){
+                res.innerHTML = '440V TRIF - E'
+                botoestri1.style.display = 'block'
+                botoestri2.style.display = 'block'
+                botoesmono1.style.display = 'None'
+                botoesmono2.style.display = 'None'
+                rmono.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+                                                
+            }
+            else if(tns == '220Vmono'){
+                res.innerHTML = '220V Monofásico'
+                botoesmono1.style.display = 'block'
+                botoesmono2.style.display = 'block'
+                botoestri1.style.display = "None"
+                botoestri2.style.display = 'None'
+                rtri.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+                
+            }
+            else if (tns == '254Vmono'){
+                res.innerHTML = '254V Monofásico'
+                botoesmono1.style.display = 'block'
+                botoesmono2.style.display = 'block'
+                botoestri1.style.display = "None"
+                botoestri2.style.display = 'None'
+                rtri.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+                
+                
+            }
+            else if (tns == '440Vmono'){
+                res.innerHTML = '440V Monofásico'
+                botoesmono1.style.display = 'block'
+                botoesmono2.style.display = 'block'
+                botoestri1.style.display = "None"
+                botoestri2.style.display = 'None'
+                rtri.innerHTML = '0'
+                divt.style.display = 'None'
+                divM.style.display = 'None'
+                adcionar.style.display = 'None'
+                enviar.style.display = 'None'
+                                
+                
+            } 
+        }
+        
+        function voltar(){
+            const back = document.getElementById('voltar')
+            
+            divt.style.display = 'None'
+            adcionar.style.display = 'None'
+            enviar.style.display = 'None'
+            document.getElementById('motor').innerHTML = '0'
+            document.getElementById('motorM').innerHTML = '0'
+            
+            
+        }
+
+
+        //Função para pegar o id dos botoes e colocar os valores de acordo com o hp
+        
+        function clicar(hpx){           
+            var info = document.getElementById('trifasico380')
+            console.log(info.innerHTML)
+            if(info.innerHTML == '220V/380V Trifásico'){ 
+                divM.style.display = 'None'
+
+
+                if(hpx == '0.3hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'0.3HP',espiras:'52-52-52',bitola:'0.60mm',forma:'10cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                    
+                    
+                }    
+                else if (hpx == '0.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'0.5HP/0.7HP',espiras:'74-74-74',bitola:'0.50mm',forma:'14cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '1hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1HP',espiras:'60-60-60',bitola:'0.55mm',forma:'18cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '1.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1.5HP',espiras:'52-52-52',bitola:'0.60mm',forma:'23cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'  
+
+                }
+                else if (hpx == '2hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'2HP',espiras:'43-43-43',bitola:'0.70mm',forma:'28cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '3hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'3HP',espiras:'36-36-36',bitola:'0.80mm',forma:'35cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '4hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'4HP',espiras:'30-30-30',bitola:'0.90mm',forma:'42cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if (hpx == '5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5HP',espiras:'25-25-25',bitola:'1.00mm',forma:'48cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '5.5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'22-22-22',bitola:'1.10mm',forma:'52cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}` 
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block' 
+                }
+                else if (hpx == '6hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'6HP',espiras:'22-22-22',bitola:'1.10mm',forma:'56cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '7hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'7/8HP',espiras:'19-19-19',bitola:'1.20mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '9hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'9HP/10HP',espiras:'17-17-17',bitola:'1.30mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '11hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'11HP',espiras:'15-15-15',bitola:'1.40mm',forma:'65cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '12hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'12HP',espiras:'13-13-13',bitola:'1.50mm',forma:'70cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                  
+            }
+            else if(info.innerHTML == '440V Trifásico'){
+                divM.style.display = 'None'
+                if(hpx == '0.3hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'None'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'                    
+                }    
+                else if (hpx == '0.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'None'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '1hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1HP',espiras:'70-70-70',bitola:'0.50mm',forma:'18cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '1.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1.5HP',espiras:'60-60-60',bitola:'0.55mm',forma:'23cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '2hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'2HP',espiras:'50-50-50',bitola:'0.65mm',forma:'28cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '3hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'3HP',espiras:'42-42-42',bitola:'0.70mm',forma:'35cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '4hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'4HP',espiras:'35-35-35',bitola:'0.80mm',forma:'42cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if (hpx == '5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5HP',espiras:'30-30-30',bitola:'0.90mm',forma:'48cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '5.5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'25-25-25',bitola:'1.00mm',forma:'52cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}` 
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block' 
+                }
+                else if (hpx == '6hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'6HP',espiras:'25-25-25',bitola:'1.00mm',forma:'56cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '7hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'7/8HP',espiras:'22-22-22',bitola:'1.10mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '9hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'9HP/10HP',espiras:'19-19-19',bitola:'1.20mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '11hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'11HP',espiras:'17-17-17',bitola:'1.30mm',forma:'65cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '12hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'12HP',espiras:'15-15-15',bitola:'1.40mm',forma:'70cm'}
+                 
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+            }
+            else if(info.innerHTML == '440V TRIF - E'){
+                divM.style.display = 'None'
+                
+                if(hpx == '0.3hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'0.3HP',espiras:'None',bitola:'None',forma:'None'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }    
+                else if (hpx == '0.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'0.5HP/0.7HP',espiras:'60-60-60',bitola:'0.55mm',forma:'14cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '1hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1HP',espiras:'60-60-60',bitola:'0.55mm',forma:'18cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '1.5hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'1.5HP',espiras:'52-52-52',bitola:'0.60mm',forma:'23cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block' 
+
+                }
+                else if (hpx == '2hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'2HP',espiras:'42-42-42',bitola:'0.70mm',forma:'28cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '3hp'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'3HP',espiras:'36-36-36',bitola:'0.80mm',forma:'35cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if (hpx == '4hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'4HP',espiras:'30-30-30',bitola:'0.90mm',forma:'42cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if (hpx == '5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5HP',espiras:'25-25-25',bitola:'1.00mm',forma:'48cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '5.5hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'22-22-22',bitola:'1.10mm',forma:'52cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}` 
+                    divt.style.display = 'block' 
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '6hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'6HP',espiras:'22-22-22',bitola:'1.10mm',forma:'56cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '7hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'7/8HP',espiras:'19-19-19',bitola:'1.20mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '9hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'9HP/10HP',espiras:'16-16-16',bitola:'1.30mm',forma:'60cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '11hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'11HP',espiras:'15-15-15',bitola:'1.40mm',forma:'65cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if (hpx == '12hp'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motor')
+                    var pEspiras = document.getElementById('espiras')
+                    var pBitola = document.getElementById('bitola')
+                    var pForma = document.getElementById('forma')
+
+                    const hp3Info = {nome:'12HP',espiras:'13-13-13',bitola:'1.50mm',forma:'70cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `Espiras: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `Bitola: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`  
+                    divt.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+            }
+            else if(info.innerHTML == '220V Monofásico'){
+                    divt.style.display = 'None'
+
+                
+                    if(hpx == '0.3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'0.3HP',espiras:'36-36-46-23 <br> Fio: 0.70mm',bitola:'15-15-78  <br>Fio: 0.50mm',forma:'10cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                    
+                }    
+                else if (hpx == '0.5hpM'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'0.5HP',espiras:'29-30-38-19 <br> Fio: 0.80mm',bitola:'12-13-62  <br>Fio: 0.55mm',forma:'14cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '0.7hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'0.7HP',espiras:'24-24-33-16 <br> Fio: 0.90mm',bitola:'12-12-53  <br>Fio: 0.60mm',forma:'18cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'1HP',espiras:'17-18-21-11 <br> Fio: 1.10mm',bitola:'8-10-48  <br>Fio: 0.60mm',forma:'23cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'  
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'1.5HP',espiras:'16-16-18-9 <br> Fio: 1.20mm',bitola:'7-7-42  <br>Fio: 0.65mm',forma:'28cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '2hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'2HP',espiras:'13-13-16-8 <br> Fio: 1.30mm',bitola:'9-9-38 <br>Fio: 0.70mm',forma:'35cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'3HP',espiras:'13-13-15-7 <br> Fio: 1.40mm',bitola:'6-6-36 <br>Fio: 0.80mm',forma:'42cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if(hpx == '4hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'4HP',espiras:'11-11-13-6 <br> Fio: 1.50mm',bitola:'5-5-28 <br>Fio: 0.90mm',forma:'48cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5HP',espiras:'9-9-12-6 <br> Fio: 1.60mm',bitola:'5-5-23 <br>Fio: 1.00mm',forma:'52cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block' 
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'8-8-10-5 <br> Fio: 1.70mm',bitola:'4-4-20 <br>Fio: 1.10mm',forma:'56cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                
+            }else if(info.innerHTML == '254V Monofásico'){
+                    divt.style.display = 'None'
+                
+                    if(hpx == '0.3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE',bitola:'NONE  <br>Fio: NONE',forma:'NONE'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                    
+                }    
+                else if (hpx == '0.5hpM'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'0.5HP',espiras:'33-34-44-22 <br> Fio: 0.70mm',bitola:'12-13-62  <br>Fio: 0.50mm',forma:'14cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '0.7hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'0.7HP',espiras:'28-28-37-18 <br> Fio: 0.80mm',bitola:'14-14-60  <br>Fio: 0.55mm',forma:'18cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'1HP',espiras:'19-21-24-12 <br> Fio: 1.00mm',bitola:'10-12-52  <br>Fio: 0.60mm',forma:'23cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'  
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'1.5HP',espiras:'18-18-21-11 <br> Fio: 1.10mm',bitola:'8-9-48 <br>Fio: 0.60mm',forma:'28cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '2hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'2HP',espiras:'15-15-18-9 <br> Fio: 1.20mm',bitola:'9-9-42 <br>Fio: 0.65mm',forma:'35cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'3HP',espiras:'15-15-17-8 <br> Fio: 1.30mm',bitola:'6-6-43 <br>Fio: 0.70mm',forma:'42cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if(hpx == '4hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'4HP',espiras:'13-13-15-7 <br> Fio: 1.40mm',bitola:'6-6-32 <br>Fio: 0.80mm',forma:'48cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5HP',espiras:'11-11-13-6 <br> Fio: 1.50mm',bitola:'5-5-28 <br>Fio: 0.90mm',forma:'52cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block' 
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'9-9-12-6 <br> Fio: 1.60mm',bitola:'5-5-23 <br>Fio: 1.00mm',forma:'56cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                
+            }
+
+            
+            
+            else if(info.innerHTML == '440V Monofásico'){
+                    divt.style.display = 'None'
+                
+                    if(hpx == '0.3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE',bitola:'NONE  <br>Fio: NONE',forma:'NONE'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                    
+                }    
+                else if (hpx == '0.5hpM'){           
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE <br> Fio: NONE',bitola:'NONE  <br>Fio: NONE',forma:'14cm'}
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '0.7hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE <br> Fio: NONE',bitola:'NONE  <br>Fio: NONE',forma:'18cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE <br> Fio: NONE',bitola:'NONE  <br>Fio: NONE',forma:'23cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'  
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '1.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'NONE',espiras:'NONE <br> Fio: NONE',bitola:'NONE <br>Fio: NONE',forma:'28cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '2hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'2HP',espiras:'26-26-30-15 <br> Fio: 0.90mm',bitola:'9-9-60 <br>Fio: 0.55mm',forma:'35cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+
+                }
+                else if(hpx == '3hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'3HP',espiras:'26-26-30-15 <br> Fio: 0.90',bitola:'7-7-52 <br>Fio: 0.60mm',forma:'42cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                } 
+                else if(hpx == '4hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'4HP',espiras:'21-21-24-12 <br> Fio: 1.00mm',bitola:'7-7-45 <br>Fio: 0.65mm',forma:'48cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5HP',espiras:'18-18-21-11 <br> Fio: 1.10mm',bitola:'6-6-42 <br>Fio: 0.70mm',forma:'52cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block' 
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                else if(hpx == '5.5hpM'){
+                    var resultado = document.getElementById('resultado')
+                    var pMotor = document.getElementById('motorM')
+                    var pEspiras = document.getElementById('tr')
+                    var pBitola = document.getElementById('ar')
+                    var pForma = document.getElementById('formaM')
+
+                    const hp3Info = {nome:'5.5HP',espiras:'16-16-19-9 <br> Fio: 1.20mm',bitola:'4-4-38 <br>Fio: 0.80mm',forma:'56cm'}            
+                    
+                    pMotor.innerHTML = `Motor: ${hp3Info.nome}`
+                    pEspiras.innerHTML = `TR: ${hp3Info.espiras}`
+                    pBitola.innerHTML = `AR: ${hp3Info.bitola}`
+                    pForma.innerHTML = `Forma: ${hp3Info.forma}`
+                    divM.style.display = 'block'
+                    adcionar.style.display = 'block'
+                    enviar.style.display = 'block'
+                }
+                
+            }
+            
+            
+                  
+            
+        
+    }
+
+        function add(){
+            var res = document.getElementById('trifasico380')
+            var pMotorM = document.getElementById('motorM').innerHTML
+            var pMotor = document.getElementById('motor').innerHTML
+            var funcionario = document.getElementById('funcionario')
+            let nome = funcionario.value
+            
+
+            if (nome != ""){
+            
+                if (pMotor != '0' ){
+                                
+                    var data = new Date()
+                    var hora = data.getHours()
+                    var minutos = data.getMinutes()
+                    var start = `${hora}h:${minutos}min`
+
+                    var info = document.getElementById('trifasico380').innerHTML
+                    
+                    var motores = {Motor:pMotor, Tensão:info, Polegada:'4', Funcionario:nome, Inicio:start}
+                    listaDeProducao.push(motores)
+                    listaDeProducaoJSON = JSON.stringify(listaDeProducao)
+                    console.log(listaDeProducaoJSON)
+                    
+
+                }else if (pMotorM != '0'){
+                    var data = new Date()
+                    var hora = data.getHours()
+                    var minutos = data.getMinutes()
+                    var start = `${hora}h:${minutos}min`
+
+                    var info = document.getElementById('trifasico380').innerHTML
+                    
+                    var motores = {Motor:pMotorM, Tensão:info, Polegada:'4', Funcionario:nome, Inicio:start}
+                    listaDeProducao.push(motores)
+                    listaDeProducaoJSON = JSON.stringify(listaDeProducao)
+                    console.log(listaDeProducaoJSON)
+            }
+
+
+            }else{
+                alert("NOME OBRIGATÓRIO")
+            }
+    }
+
+
+        
+                                                
+    </script>
+
+
+</body>
+</html>
